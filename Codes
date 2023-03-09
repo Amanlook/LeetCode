@@ -1,0 +1,157 @@
+# Leet Code problem 1 - Two sum (in 1 loop)
+
+def twoSum(nums, target):
+  required = {}
+  for i in range(len(nums)):
+     if target - nums[i] in required:
+        return [required[target - nums[i]],i]
+     else:
+        required[nums[i]]=i
+	
+	
+# Hacker rank code -  Array Reverse (one loop)
+
+a = [1,2,3,4,5,324,345,33,3]
+l = len(a)
+if l%2==0:
+    f = l//2
+else:
+    f = ((l+1)//2)
+for i in range(f):
+    a[i],a[l-1-i] = a[l-1-i],a[i]
+    
+    
+    
+# Find prime number in given range
+
+first_num = 10
+second_num = 20
+
+for i in range(first_num, second_num+1):
+    flag = 0
+    for j in range(2,second_num//2):
+        if i % j == 0:
+            flag = 1
+            break
+    if flag == 0:
+        print(i)
+        
+print(a)
+
+# leetcode - str to int level = medium
+
+class Solution:
+    def myAtoi(self, s: str) -> int:
+        s = s.strip()
+        if not s:
+            return 0
+        sign = -1 if s[0] == '-' else 1
+        if s[0] in {'-','+'}:
+            s = s[1:]
+        nums=0
+
+        for i in s:
+            if not i.isdigit():
+                break
+            nums = nums*10 + ord(i) - ord('0')
+            if sign*nums <= -2**31:
+                return -2**31
+            if sign*nums >= 2**31-1:
+                return 2**31-1
+        return sign*nums
+	
+	
+# leetcode - Median of wo sorted array
+class Solution:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        nums1.extend(nums2)
+        sorted_arr = sorted(nums1)
+
+        if len(sorted_arr)%2 == 0:
+            return (sorted_arr[len(sorted_arr)//2-1] + sorted_arr[len(sorted_arr)//2])/2
+        else:
+            return (sorted_arr[len(sorted_arr)//2])
+
+# leetcode - reverse of integer
+
+    def reverse(self, x: int) -> int:
+        if x >= 2**31-1 or x <= -2**31: return 0
+        else:
+            strg = str(x)
+            if x >= 0 :
+                revst = strg[::-1]
+            else:
+                temp = strg[1:] 
+                temp2 = temp[::-1] 
+                revst = "-" + temp2
+            if int(revst) >= 2**31-1 or int(revst) <= -2**31: return 0
+            else: return int(revst)
+	
+#leetcode - palindrome number
+
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        temp = x
+        v = 0
+        for i in range(len(str(x))):
+            v = 10*v + x%10
+            x = x//10
+        return v == temp
+	
+# leetcode - valid parenthesis
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+
+        if len(s)%2 != 0: return False
+
+        open_p = tuple('({[')
+        close_p = tuple(')}]')
+        dic = dict(zip(open_p, close_p))
+        q = []
+
+        for i in s:
+            if i in open_p:
+                q.append(dic[i])
+            elif i in close_p:
+                if not q or i != q.pop():
+                    return False
+        if not q:
+            return True
+        return False
+
+
+# leetcode - Remove of duplicates in array 
+
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        """
+        nums[:] = -> will replace the list items
+        nums = -> will create a new list
+        in this we do not create a new list we must change the origin list
+        """
+	
+        nums[:] = sorted(set(nums))
+        return len(nums)
+
+
+# leetcode - Longest Common prefix in List
+
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        result = ""
+        for i in zip(*strs):
+            if len(set(i)) == 1:
+                result += i[0]
+            else:
+                return result
+        return result
+
+
+# leetcode - power of x over n
+
+class Solution:
+    def myPow(self, x: float, n: int) -> float:
+        if (-2**31-1 < n < 2**31-1) and (-100 < x < 100):
+            return x**n
+        return x
