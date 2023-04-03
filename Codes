@@ -186,3 +186,13 @@ class Solution:
           else:
               right -= 1              
       return max_area
+      
+      
+# LeetCode - Remove Element
+
+	"""used there own function to check"""
+	class Solution:
+	    def removeElement(self, nums: List[int], val: int) -> int:
+		arr = [x for x in nums if x != val]
+		nums[:] = arr
+		return len(nums)
