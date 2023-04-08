@@ -211,3 +211,15 @@ class Solution:
 			num -= values[i]
 			roman += symbols[i]
 		return roman
+
+--------------------------------------------------------------------------------------------------------
+
+# LeetCode - Plus One
+	class Solution:
+	    def plusOne(self, digits: List[int]) -> List[int]:
+		string_value = "".join(str(x) for x in digits)
+		string_value = str(int(string_value) + 1)
+		digits[:] = [int(x) for x in string_value]
+		return digits
+		
+---------------------------------------------------------------------------------------------------------
