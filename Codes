@@ -223,3 +223,39 @@ class Solution:
 		return digits
 		
 ---------------------------------------------------------------------------------------------------------
+
+# LeetCode - length of last word
+	class Solution:
+	    def lengthOfLastWord(self, s: str) -> int:
+		li = s.split(" ")
+		if len(li) == 1: return len(s)
+		res = ""
+		i = len(li)-1
+		while i>=0:
+		    if li[i] != "":
+			res += li[i]
+			break
+		    i -= 1
+		return len(res)
+		
+---------------------------------------------------------------------------------------------------------
+
+LeetCode - Binary addtion
+	class Solution:
+	    def addBinary(self, a: str, b: str) -> str:
+		value_a = 0
+		value_b = 0
+		for i in range(len(a)-1,-1,-1):
+		    if a[i] == '1':
+			value_a += 2**(len(a)-i-1)
+		for j in range(len(b)-1,-1,-1):
+		    if b[j] == '1':
+			value_b += 2**(len(b)-j-1)
+		res = value_b + value_a
+		r = ""
+		if res == 0: return "0"
+		while res > 0:
+		    r += str(res%2)
+		    print(r)
+		    res = res//2
+		return r[::-1]
