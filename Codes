@@ -259,3 +259,20 @@ LeetCode - Binary addtion
 		    print(r)
 		    res = res//2
 		return r[::-1]
+		
+----------------------------------------------------------------------------------------------------------
+
+LeetCode : Is Subsequence
+	class Solution:
+	    def isSubsequence(self, s: str, t: str) -> bool:
+		c = []
+		c[:0] = t
+		for i in range(len(s)):
+		    if s[i] in c:
+			index = c.index(s[i])
+		    else:
+			return False
+		    c = c[index+1:]
+		return True
+		
+---------------------------------------------------------------------------------------------------------
