@@ -340,3 +340,30 @@ Code:
 		    current = next
 		head = prev
 		return head
+		
+-------------------------------------------------------------------------------------------------------------
+
+LeetCode : Middle of LinkedList
+Code :
+	# Definition for singly-linked list.
+	# class ListNode:
+	#     def __init__(self, val=0, next=None):
+	#         self.val = val
+	#         self.next = next
+	class Solution:
+	    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+		if head is None: return None
+		lenOfList = 0
+		temp_head = head
+		while head is not None:
+		    lenOfList += 1
+		    head=head.next
+
+		mid = lenOfList//2
+		count = 0
+		while count < mid:
+		    count+=1
+		    temp_head = temp_head.next
+		return temp_head
+		
+---------------------------------------------------------------------------------------------------------------
