@@ -64,3 +64,13 @@ class Solution:
         return ""
 
 --------------------------------------------------------------------------------------------------
+LeetCode : Kids With the Greatest Number of Candies
+
+Code :
+class Solution:
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        max_value = max(candies)
+        updated_list = [x + extraCandies >= max_value for x in candies]
+        return updated_list
+
+------------------------------------------------------------------------------------------------------
